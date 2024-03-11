@@ -3,7 +3,9 @@ const mysql = require('mysql2');
 exports.addbook = async (req, res) => {
     try {
 
-        const { Book_Title, Book_Price, Book_img, Book_Description, StockQuantity } = req.body;
+        const { Book_Title, Book_Price, Book_Description, StockQuantity } = req.body;
+
+        const Book_img = req.file ? req.file.filename : null;
 
         const connectDB = mysql.createConnection ({
             host: 'localhost',
