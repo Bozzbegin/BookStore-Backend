@@ -4,7 +4,7 @@ exports.addbook = async (req, res) => {
     try {
 
         const { Book_Title, Book_Price, Book_Description, StockQuantity } = req.body;
-
+    
         const Book_img = req.file ? req.file.filename : null;
 
         const connectDB = mysql.createConnection ({
@@ -15,7 +15,7 @@ exports.addbook = async (req, res) => {
         });
 
         connectDB.connect();
-
+       
         const insertQuery = "INSERT INTO tb_book (Book_Title, Book_Price, Book_img, Book_Description, StockQuantity) VALUES (?, ?, ?, ?, ?)";
         const values = [Book_Title, Book_Price, Book_img, Book_Description, StockQuantity];
 
